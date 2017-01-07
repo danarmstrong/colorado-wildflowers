@@ -1,0 +1,65 @@
+<!--
+  Generated template for the Search page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input type="text" placeholder="Scientific or common name" [(ngModel)]="criteria.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Family</ion-label>
+    <ion-input type="text" placeholder="Scientific or common family" [(ngModel)]="criteria.family"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Zone</ion-label>
+    <ion-select [(ngModel)]="criteria.zone">
+      <ion-option *ngFor="let z of zones" [value]="z">{{z}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Altitude</ion-label>
+    <ion-input type="number" placeholder="Altitude" [(ngModel)]="criteria.altitude"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Time of bloom</ion-label>
+    <ion-select [(ngModel)]="criteria.bloom">
+      <ion-option value="0">January</ion-option>
+      <ion-option value="1">February</ion-option>
+      <ion-option value="2">March</ion-option>
+      <ion-option value="3">April</ion-option>
+      <ion-option value="4">May</ion-option>
+      <ion-option value="5">June</ion-option>
+      <ion-option value="6">July</ion-option>
+      <ion-option value="7">August</ion-option>
+      <ion-option value="8">September</ion-option>
+      <ion-option value="9">October</ion-option>
+      <ion-option value="10">November</ion-option>
+      <ion-option value="11">December</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Origin</ion-label>
+    <ion-select [(ngModel)]="criteria.origin">
+      <ion-option *ngFor="let o of origins" [value]="o">{{o}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button ion-button block (click)="search()">Search</button>
+  <button ion-button block clear (click)="reset()">Reset</button>
+  <button ion-button block clear (click)="cancel()">Cancel</button>
+</ion-content>
