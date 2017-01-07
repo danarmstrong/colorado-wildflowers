@@ -111,6 +111,9 @@ export class FlowerListPage {
   }
 
   private search(criteria: any) {
+
+    console.debug('Search criteria', criteria);
+
     this.filtered = true;
     this.flowers = this.dataService.getFlowers().filter(val => {
       if (criteria.name && criteria.name.length > 0) {

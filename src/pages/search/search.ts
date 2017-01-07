@@ -27,7 +27,7 @@ export class SearchPage {
       this.resetCriteria();
   }
 
-  private resetCriteria() {
+  resetCriteria() {
     this.criteria = {
       name: null,
       family: null,
@@ -40,10 +40,6 @@ export class SearchPage {
 
   search() {
     this.viewCtrl.dismiss(this.criteria);
-  }
-
-  reset() {
-    this.viewCtrl.dismiss({reset: true});
   }
 
   cancel() {

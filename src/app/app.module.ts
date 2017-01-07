@@ -1,4 +1,4 @@
-import {NgModule, ErrorHandler} from '@angular/core';
+import {NgModule, ErrorHandler, enableProdMode} from '@angular/core';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {DataService} from '../providers/data-service';
@@ -11,6 +11,8 @@ import {FlowerListPage} from '../pages/flower-list/flower-list';
 import {FlowerImagesPage} from '../pages/flower-images/flower-images';
 import {FlowerDetailsPage} from '../pages/flower-details/flower-details';
 import {SearchPage} from '../pages/search/search';
+
+enableProdMode();
 
 @NgModule({
   declarations: [
