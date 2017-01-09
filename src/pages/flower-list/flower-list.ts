@@ -16,14 +16,23 @@ import {TabsPage} from '../tabs/tabs';
 })
 export class FlowerListPage {
 
+  private pageSize: number;
+  private maxPages: number;
+  private page: number;
+
   private viewMode: string;
-  private flowers: any;
+  private data: any;
+  private viewData: any;
   private filtered: boolean;
   private searchCriteria: any;
 
   constructor(private navCtrl: NavController, private navParams: NavParams,
               private loadingCtrl: LoadingController, private modalCtrl: ModalController,
               private alertCtrl: AlertController, private dataService: DataService) {
+    this.pageSize = 30;
+    this.maxPages = 0;
+    this.page = 0;
+
     this.filtered = false;
     this.viewMode = '0';
     this.searchCriteria = null;
@@ -37,7 +46,32 @@ export class FlowerListPage {
 
   initializeData() {
     this.filtered = false;
-    this.flowers = this.dataService.getFlowers();
+    this.data = this.dataService.getFlowers();
+    this.viewData = [];
+
+    this.page = 0;
+    this.maxPages = Math.ceil(this.data.length > 0 ? this.data.length / this.pageSize : 0);
+    this.loadPage(this.page);
+  }
+
+  loadPage(page: number) {
+    if (this.maxPages === 0 || page > this.maxPages)
+      return;
+    let start = page * this.pageSize;
+    let end = Math.min(start + this.pageSize, this.data.length);
+    for (let i = start; i < end; ++i)
+      this.viewData.push(this.data[i]);
+  }
+
+  loadMore(infiniteScroll) {
+    this.page++;
+    this.loadPage(this.page);
+
+    infiniteScroll.complete();
+
+    /*setTimeout(() => {
+
+    }, 200);*/
   }
 
   getImageSrc(src: string) {
@@ -117,8 +151,8 @@ export class FlowerListPage {
 
   private search(criteria: any) {
 
-    this.filtered = true;
-    this.flowers = this.dataService.getFlowers().filter(val => {
+    this.viewData = [];
+    this.data = this.dataService.getFlowers().filter(val => {
       if (criteria.name && criteria.name.length > 0) {
         if (!val.scientificName.toLowerCase().includes(criteria.name.toLowerCase()) && !val.commonName.toLowerCase().includes(criteria.name.toLowerCase()))
           return false;
@@ -151,6 +185,12 @@ export class FlowerListPage {
 
       return val;
     });
+
+    this.page = 0;
+    this.maxPages = Math.ceil(this.data.length > 0 ? this.data.length / this.pageSize : 0);
+    this.loadPage(this.page);
+
+    this.filtered = true;
   }
 
   goToView(flower: any) {

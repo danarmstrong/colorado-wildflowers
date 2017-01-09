@@ -1,9 +1,4 @@
-<!--
-  Generated template for the FlowerList page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar color="dark">
@@ -17,26 +12,33 @@
   </ion-navbar>
 
   <ion-toolbar>
-    <ion-select [(ngModel)]="viewMode">
+    <ion-segment [(ngModel)]="viewMode">
+      <ion-segment-button value="0">
+        Sci. name
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        Common name
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        Family
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- select acts strange in a toolbar -->
+    <!--<ion-select [(ngModel)]="viewMode">
       <ion-option value="0">Scientific name</ion-option>
       <ion-option value="1">Common name</ion-option>
       <ion-option value="2">Scientific family</ion-option>
       <ion-option value="3">Common family</ion-option>
-    </ion-select>
-
-    <ion-buttons end>
-      <button ion-button icon-left clear color="danger" *ngIf="filtered" (click)="resetData()">
-        <ion-icon name="backspace"></ion-icon>
-        Clear search
-      </button>
-    </ion-buttons>
+    </ion-select>-->
   </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-list [virtualScroll]="flowers" [approxItemHeight]="'100px'" no-lines>
+  <!-- virtual scroll does not work with infinite scroll yet -->
+  <!-- <ion-list [virtualScroll]="viewData" [approxItemHeight]="'100px'" no-lines>
     <button ion-item *virtualItem="let flower" (click)="goToView(flower)">
       <ion-thumbnail item-left>
         <img [src]="getImageSrc(flower.thumbnail)">
@@ -46,5 +48,34 @@
       <p>{{getPrimaryLabel(flower)}}</p>
       <p>{{getSecondaryLabel(flower)}}</p>
     </button>
+  </ion-list> -->
+
+  <ion-list>
+    <button ion-item *ngFor="let flower of viewData" (click)="goToView(flower)">
+      <ion-thumbnail item-left>
+        <img [src]="getImageSrc(flower.thumbnail)">
+      </ion-thumbnail>
+      <h2>{{getPrimaryTitle(flower)}}</h2>
+      <h3>{{getSecondaryTitle(flower)}}</h3>
+      <p>{{getPrimaryLabel(flower)}}</p>
+      <p>{{getSecondaryLabel(flower)}}</p>
+    </button>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    {{data.length}} results
+
+    <ion-buttons end>
+      <button ion-button icon-left clear color="danger" *ngIf="filtered" (click)="resetData()">
+        <ion-icon name="backspace"></ion-icon>
+        Clear search
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
