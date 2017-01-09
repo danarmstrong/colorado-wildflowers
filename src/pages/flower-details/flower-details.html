@@ -49,5 +49,9 @@
       <h2>Origin</h2>
       <p>{{flower.origin}}</p>
     </ion-item>
+
+    <ion-item *ngIf="flower.noxiousWeed">
+      <h2 color="danger"><ion-icon name="alert"></ion-icon> Noxious weed</h2>
+    </ion-item>
   </ion-list>
 </ion-content>

@@ -59,6 +59,8 @@
       <h3>{{getSecondaryTitle(flower)}}</h3>
       <p>{{getPrimaryLabel(flower)}}</p>
       <p>{{getSecondaryLabel(flower)}}</p>
+
+      <ion-icon *ngIf="flower.noxiousWeed" item-right name="alert" color="danger"></ion-icon>
     </button>
   </ion-list>
 

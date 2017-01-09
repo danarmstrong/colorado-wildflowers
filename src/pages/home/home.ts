@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, Platform} from 'ionic-angular';
-import {EmailComposer} from 'ionic-native';
+import {SocialSharing} from 'ionic-native';
 import {IntroductionPage} from '../introduction/introduction';
 import {FlowerListPage} from '../flower-list/flower-list';
 import {ZonesPage} from '../zones/zones';
@@ -24,8 +24,10 @@ export class HomePage {
     };
 
     this.platform.ready().then(() => {
-      EmailComposer.isAvailable().then((available: boolean) => {
-        this.emailAvailable = available;
+      SocialSharing.canShareViaEmail().then(() => {
+        this.emailAvailable = true;
+      }).catch(() => {
+        this.emailAvailable = false;
       });
     });
   }
@@ -47,12 +49,11 @@ export class HomePage {
   }
 
   openEmail() {
-    if (!this.emailAvailable) {
-      // TODO error alert
-      return;
-    }
-
-    EmailComposer.open(this.emailTemplate);
+    SocialSharing.shareViaEmail('', this.emailTemplate.subject, this.emailTemplate.to).then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+    });
   }
 
 }
