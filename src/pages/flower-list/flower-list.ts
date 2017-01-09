@@ -28,6 +28,11 @@ export class FlowerListPage {
     this.viewMode = '0';
     this.searchCriteria = null;
     this.initializeData();
+
+    if (navParams.get('searchCriteria')) {
+      this.searchCriteria = navParams.get('searchCriteria');
+      this.search(this.searchCriteria);
+    }
   }
 
   initializeData() {
@@ -112,8 +117,6 @@ export class FlowerListPage {
 
   private search(criteria: any) {
 
-    console.debug('Search criteria', criteria);
-
     this.filtered = true;
     this.flowers = this.dataService.getFlowers().filter(val => {
       if (criteria.name && criteria.name.length > 0) {
@@ -127,7 +130,7 @@ export class FlowerListPage {
       }
 
       if (criteria.zone) {
-        if (!val.zones.includes(criteria.zone))
+        if (!val.zones.includes(criteria.zone.toLowerCase()))
           return false;
       }
 

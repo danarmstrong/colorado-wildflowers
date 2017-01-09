@@ -1094,10 +1094,13 @@
     "scientificName": "Argentina anserina",
     "thumbnail": "thumb_cTmCeGcFMx.jpg",
     "zones": [
-      "prairie",
+      "plains",
       "foothills",
       "montane",
       "subalpine"
+    ],
+    "notes": [
+      "prairie"
     ]
   },
   {
@@ -1118,7 +1121,9 @@
     "scientificName": "Arnica cordifolia",
     "thumbnail": "thumb_jzJGgumFAs.jpg",
     "zones": [
-      "foothills to subalpine"
+      "foothills",
+      "montane",
+      "subalpine"
     ]
   },
   {
@@ -3655,7 +3660,10 @@
     "scientificName": "Oreocarya thyrsiflora or Cryptantha thyrsiflora",
     "thumbnail": "thumb_yIEyGLnEzT.jpg",
     "zones": [
-      "plains  (higher elevations are for populations found in south park)"
+      "plains"
+    ],
+    "notes": [
+      "higher elevations are for populations found in south park"
     ]
   },
   {
@@ -3877,6 +3885,9 @@
     "thumbnail": "thumb_qVtYxTkfaj.jpg",
     "zones": [
       "plains",
+      "foothills"
+    ],
+    "notes": [
       "lower foothills"
     ]
   },
@@ -3900,6 +3911,9 @@
     "thumbnail": "thumb_dxhhXOAshU.jpg",
     "zones": [
       "plains",
+      "foothills"
+    ],
+    "notes": [
       "lower foothills"
     ]
   },
@@ -4567,7 +4581,9 @@
     "scientificName": "Erythronium grandiflorum",
     "thumbnail": "thumb_JKhaqDzPvl.jpg",
     "zones": [
-      "montane to alpine"
+      "montane",
+      "subalpine",
+      "alpine"
     ]
   },
   {
@@ -4655,7 +4671,9 @@
     "scientificName": "Fragaria virginiana",
     "thumbnail": "thumb_lERiHDhWNP.jpg",
     "zones": [
-      "foothills to subalpine"
+      "foothills",
+      "montane",
+      "subalpine"
     ]
   },
   {
@@ -10700,7 +10718,9 @@
     "scientificName": "Toxicoscordion venenosum",
     "thumbnail": "thumb_bpkWmmIssH.jpg",
     "zones": [
-      "plains to montane"
+      "plains",
+      "foothills",
+      "montane"
     ]
   },
   {
@@ -11347,7 +11367,9 @@
     "scientificName": "Viola nuttalli",
     "thumbnail": "thumb_mnqiVLhGaw.jpg",
     "zones": [
-      "plains to montane"
+      "plains",
+      "foothills",
+      "montane"
     ]
   },
   {
@@ -11368,7 +11390,8 @@
     "scientificName": "Viola scopulorum or Viola canadensis var. scopulorum",
     "thumbnail": "thumb_MqriNMpaHb.jpg",
     "zones": [
-      "foothills to montane"
+      "foothills",
+      "montane"
     ]
   },
   {

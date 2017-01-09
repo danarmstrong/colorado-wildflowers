@@ -2,12 +2,7 @@ import {Component} from '@angular/core';
 import {ViewController, NavParams} from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 
-/*
-  Generated class for the Search page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html'

@@ -17,7 +17,6 @@ export class FlowerDetailsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.flower = navParams.data;
-    console.debug('Details flower', this.flower);
   }
 
   getZones() {

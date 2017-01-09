@@ -1,13 +1,13 @@
-<!--
-  Generated template for the Search page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>Search</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -25,13 +25,13 @@
   <ion-item>
     <ion-label>Zone</ion-label>
     <ion-select [(ngModel)]="criteria.zone">
-      <ion-option *ngFor="let z of zones" [value]="z">{{z}}</ion-option>
+      <ion-option *ngFor="let z of zones" [value]="z.name">{{z.name}}</ion-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
     <ion-label>Altitude</ion-label>
-    <ion-input type="number" placeholder="Altitude" [(ngModel)]="criteria.altitude"></ion-input>
+    <ion-input type="number" placeholder="4800" [(ngModel)]="criteria.altitude"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -61,5 +61,4 @@
 
   <button ion-button block (click)="search()">Search</button>
   <button ion-button block clear (click)="resetCriteria()">Reset</button>
-  <button ion-button block clear (click)="cancel()">Cancel</button>
 </ion-content>

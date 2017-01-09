@@ -25,8 +25,9 @@
     </ion-select>
 
     <ion-buttons end>
-      <button ion-button icon-only *ngIf="filtered" (click)="resetData()">
+      <button ion-button icon-left clear color="danger" *ngIf="filtered" (click)="resetData()">
         <ion-icon name="backspace"></ion-icon>
+        Clear search
       </button>
     </ion-buttons>
   </ion-toolbar>

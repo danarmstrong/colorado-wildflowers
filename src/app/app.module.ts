@@ -6,6 +6,9 @@ import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {HomePage} from '../pages/home/home';
 import {IntroductionPage} from '../pages/introduction/introduction';
+import {ReferencesPage} from '../pages/references/references';
+import {ZonesPage} from '../pages/zones/zones';
+import {ZoneDetailsPage} from '../pages/zone-details/zone-details';
 import {TabsPage} from '../pages/tabs/tabs';
 import {FlowerListPage} from '../pages/flower-list/flower-list';
 import {FlowerImagesPage} from '../pages/flower-images/flower-images';
@@ -21,6 +24,9 @@ enableProdMode();
     ContactPage,
     HomePage,
     IntroductionPage,
+    ReferencesPage,
+    ZonesPage,
+    ZoneDetailsPage,
     TabsPage,
     FlowerListPage,
     FlowerImagesPage,
@@ -37,6 +43,9 @@ enableProdMode();
     ContactPage,
     HomePage,
     IntroductionPage,
+    ReferencesPage,
+    ZonesPage,
+    ZoneDetailsPage,
     TabsPage,
     FlowerListPage,
     FlowerImagesPage,
