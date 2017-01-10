@@ -47,11 +47,7 @@ export class FlowerListPage {
   initializeData() {
     this.filtered = false;
     this.data = this.dataService.getFlowers();
-    this.viewData = [];
-
-    this.page = 0;
-    this.maxPages = Math.ceil(this.data.length > 0 ? this.data.length / this.pageSize : 0);
-    this.loadPage(this.page);
+    this.sortData();
   }
 
   loadPage(page: number) {
@@ -146,14 +142,47 @@ export class FlowerListPage {
 
   private search(criteria: any) {
 
-    this.viewData = [];
     this.data = this.dataService.searchFlowers(criteria);
+    this.sortData();
+    this.filtered = true;
+  }
+
+  sortData() {
+
+    let key;
+    switch (this.viewMode) {
+      case '0':
+        key = 'scientificName';
+        break;
+      case '1':
+        key = 'commonName';
+        break;
+      case '2':
+        key = 'scientificFamily';
+        break;
+      case '3':
+        key = 'commonFamily';
+        break;
+    }
+
+    let mapped = this.data.map((el, i) => {
+      return {index: i, value: el[key]};
+    });
+
+    mapped.sort((a, b) => {
+      return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
+    });
+
+    let result = mapped.map(el => {
+      return this.data[el.index];
+    });
+
+    this.viewData = [];
+    this.data = result;
 
     this.page = 0;
     this.maxPages = Math.ceil(this.data.length > 0 ? this.data.length / this.pageSize : 0);
     this.loadPage(this.page);
-
-    this.filtered = true;
   }
 
   goToView(flower: any) {

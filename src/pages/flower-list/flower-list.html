@@ -12,7 +12,7 @@
   </ion-navbar>
 
   <ion-toolbar>
-    <ion-segment [(ngModel)]="viewMode">
+    <ion-segment [(ngModel)]="viewMode" (ionChange)="sortData()">
       <ion-segment-button value="0">
         Sci. name
       </ion-segment-button>
