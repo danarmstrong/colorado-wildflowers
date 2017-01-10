@@ -4,23 +4,37 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding text-center class="vertical-align">
+<ion-content padding class="vertical-align">
 
   <ion-grid>
-    <ion-row>
-      <button ion-button block (click)="goToIntroduction()" color="light">Introduction</button>
+    <ion-row center>
+      <ion-col width-100>
+        <button ion-button block (click)="goToIntroduction()" color="light">Introduction</button>
+      </ion-col>
     </ion-row>
-    <ion-row>
-      <button ion-button block (click)="goToFlowerList()" color="light">Flowers</button>
+
+    <ion-row center>
+      <ion-col width-100>
+        <button ion-button block (click)="goToFlowerList()" color="light">Flowers</button>
+      </ion-col>
     </ion-row>
-    <ion-row>
-      <button ion-button block (click)="goToZones()" color="light">Vegetation Zones</button>
+
+    <ion-row center>
+      <ion-col width-100>
+        <button ion-button block (click)="goToZones()" color="light">Vegetation Zones</button>
+      </ion-col>
     </ion-row>
-    <ion-row>
-      <button ion-button block (click)="goToReferences()" color="light">References</button>
+
+    <ion-row center>
+      <ion-col width-100>
+        <button ion-button block (click)="goToReferences()" color="light">References</button>
+      </ion-col>
     </ion-row>
-    <ion-row *ngIf="emailAvailable">
-      <button ion-button block (click)="openEmail()" color="light">Contact</button>
+
+    <ion-row center>
+      <ion-col width-100>
+        <button ion-button block (click)="openEmail()" color="light">Contact</button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 

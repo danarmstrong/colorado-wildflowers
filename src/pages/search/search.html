@@ -35,7 +35,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Time of bloom</ion-label>
+    <ion-label>Month of bloom</ion-label>
     <ion-select [(ngModel)]="criteria.bloom">
       <ion-option value="0">January</ion-option>
       <ion-option value="1">February</ion-option>
@@ -56,6 +56,20 @@
     <ion-label>Origin</ion-label>
     <ion-select [(ngModel)]="criteria.origin">
       <ion-option *ngFor="let o of origins" [value]="o">{{o}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Color</ion-label>
+    <ion-select [(ngModel)]="criteria.color">
+      <ion-option value="Blue">Blue</ion-option>
+      <ion-option value="Green">Green</ion-option>
+      <ion-option value="Orange">Orange</ion-option>
+      <ion-option value="Pink">Pink</ion-option>
+      <ion-option value="Purple">Purple</ion-option>
+      <ion-option value="Red">Red</ion-option>
+      <ion-option value="White">White</ion-option>
+      <ion-option value="Yellow">Yellow</ion-option>
     </ion-select>
   </ion-item>
 

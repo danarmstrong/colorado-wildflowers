@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, Platform} from 'ionic-angular';
+import {NavController, Platform, AlertController} from 'ionic-angular';
 import {SocialSharing} from 'ionic-native';
 import {IntroductionPage} from '../introduction/introduction';
 import {FlowerListPage} from '../flower-list/flower-list';
@@ -15,7 +15,7 @@ export class HomePage {
   private emailAvailable: boolean;
   private emailTemplate: any;
 
-  constructor(public navCtrl: NavController, private platform: Platform) {
+  constructor(private navCtrl: NavController, private platform: Platform, private alertCtrl: AlertController) {
     this.emailAvailable = false;
     this.emailTemplate = {
       to: 'info@easterncoloradowildflowers.com',
@@ -24,6 +24,7 @@ export class HomePage {
     };
 
     this.platform.ready().then(() => {
+
       SocialSharing.canShareViaEmail().then(() => {
         this.emailAvailable = true;
       }).catch(() => {
@@ -49,7 +50,17 @@ export class HomePage {
   }
 
   openEmail() {
-    SocialSharing.shareViaEmail('', this.emailTemplate.subject, this.emailTemplate.to).then(() => {
+
+    if (!this.emailAvailable) {
+      let emailAlert = this.alertCtrl.create({
+        title: 'Contact',
+        subTitle: 'Please send an email to ' + this.emailTemplate.to,
+        buttons: ['Ok']
+      });
+      return emailAlert.present();
+    }
+
+    SocialSharing.shareViaEmail('<body></body>', this.emailTemplate.subject, this.emailTemplate.to).then(() => {
       // Success!
     }).catch(() => {
       // Error!

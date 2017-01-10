@@ -29,7 +29,8 @@ export class SearchPage {
       zone: null,
       altitude: null,
       bloom: null,
-      origin: null
+      origin: null,
+      color: null
     };
   }
 

@@ -66,12 +66,7 @@ export class FlowerListPage {
   loadMore(infiniteScroll) {
     this.page++;
     this.loadPage(this.page);
-
     infiniteScroll.complete();
-
-    /*setTimeout(() => {
-
-    }, 200);*/
   }
 
   getImageSrc(src: string) {
@@ -152,39 +147,7 @@ export class FlowerListPage {
   private search(criteria: any) {
 
     this.viewData = [];
-    this.data = this.dataService.getFlowers().filter(val => {
-      if (criteria.name && criteria.name.length > 0) {
-        if (!val.scientificName.toLowerCase().includes(criteria.name.toLowerCase()) && !val.commonName.toLowerCase().includes(criteria.name.toLowerCase()))
-          return false;
-      }
-
-      if (criteria.family && criteria.family.length > 0) {
-        if (!val.scientificFamily.toLowerCase().includes(criteria.family.toLowerCase()) && !val.commonFamily.toLowerCase().includes(criteria.family.toLowerCase()))
-          return false;
-      }
-
-      if (criteria.zone) {
-        if (!val.zones.includes(criteria.zone.toLowerCase()))
-          return false;
-      }
-
-      if (criteria.altitude) {
-        if (criteria.altitude < val.minAltitude || criteria.altitude > val.maxAltitude)
-          return false;
-      }
-
-      if (criteria.bloom) {
-        if (criteria.bloom < val.minBloom || criteria.bloom > val.maxBloom)
-          return false;
-      }
-
-      if (criteria.origin) {
-        if (!val.origin.toLowerCase().includes(criteria.origin.toLowerCase()))
-          return false;
-      }
-
-      return val;
-    });
+    this.data = this.dataService.searchFlowers(criteria);
 
     this.page = 0;
     this.maxPages = Math.ceil(this.data.length > 0 ? this.data.length / this.pageSize : 0);
