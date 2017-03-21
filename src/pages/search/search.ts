@@ -25,7 +25,8 @@ export class SearchPage {
   resetCriteria() {
     this.criteria = {
       name: null,
-      family: null,
+      commonFamily: null,
+      scientificFamily: null,
       zone: null,
       altitude: null,
       bloom: null,
