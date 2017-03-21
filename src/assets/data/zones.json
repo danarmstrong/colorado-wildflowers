@@ -1,11 +1,5 @@
 [
   {
-    "name": "Desert and Semi-desert",
-    "altitude": "Typically from 4,000 to 6,500 feet",
-    "description": "Arid. Annually 5-14 inches of moisture, 1/4 or less from snow. Desert and semi-desert areas are characterized by open, sandy, gravelly flats with scattered shrubs (Saltbush, Sagebrush) and Cottonwoods along washes. Higher semi-desert canyons have Pinyon Pine, Juniper, and Oak with some thick patches of Yucca, Sagebrush, Mountain Mahogany, and other shrubs. Wildflower growth is best from March to June but is highly dependent on winter moisture."
-  },
-
-  {
     "name": "Plains",
     "altitude": "3,500 to 6,500 feet",
     "description": "The plains are, where undisturbed by agriculture, a mixed grass prairie. Sandy hills may have shrubs such as Sagebrush and Rabbitbrush mixed with Cacti and Yucca. Cottonwoods, willows, and Box Elder are found along streams. Percentage of days with sunshine is very high and humidity is quite low. Annual precipitation is less than 20 inches with about a quarter of that from snow. Wildflowers in undisturbed areas can be very good from March through June."
