@@ -13,27 +13,19 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label>Name</ion-label>
-    <ion-input type="text" placeholder="Scientific or common name" [(ngModel)]="criteria.name"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Family</ion-label>
-    <ion-input type="text" placeholder="Scientific or common family" [(ngModel)]="criteria.family"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Zone</ion-label>
-    <ion-select [(ngModel)]="criteria.zone">
-      <ion-option *ngFor="let z of zones" [value]="z.name">{{z.name}}</ion-option>
+    <ion-label>Color</ion-label>
+    <ion-select [(ngModel)]="criteria.color">
+      <ion-option value="Blue">Blue</ion-option>
+      <ion-option value="Green">Green</ion-option>
+      <ion-option value="Orange">Orange</ion-option>
+      <ion-option value="Pink">Pink</ion-option>
+      <ion-option value="Purple">Purple</ion-option>
+      <ion-option value="Red">Red</ion-option>
+      <ion-option value="White">White</ion-option>
+      <ion-option value="Yellow">Yellow</ion-option>
     </ion-select>
   </ion-item>
-
-  <ion-item>
-    <ion-label>Altitude</ion-label>
-    <ion-input type="number" placeholder="4800" [(ngModel)]="criteria.altitude"></ion-input>
-  </ion-item>
-
+  
   <ion-item>
     <ion-label>Month of bloom</ion-label>
     <ion-select [(ngModel)]="criteria.bloom">
@@ -51,25 +43,33 @@
       <ion-option value="11">December</ion-option>
     </ion-select>
   </ion-item>
+  
+  <ion-item>
+    <ion-label>Zone</ion-label>
+    <ion-select [(ngModel)]="criteria.zone">
+      <ion-option *ngFor="let z of zones" [value]="z.name">{{z.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input type="text" placeholder="Scientific or common name" [(ngModel)]="criteria.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Family</ion-label>
+    <ion-input type="text" placeholder="Scientific or common family" [(ngModel)]="criteria.family"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Altitude</ion-label>
+    <ion-input type="number" placeholder="4800" [(ngModel)]="criteria.altitude"></ion-input>
+  </ion-item>
 
   <ion-item>
     <ion-label>Origin</ion-label>
     <ion-select [(ngModel)]="criteria.origin">
       <ion-option *ngFor="let o of origins" [value]="o">{{o}}</ion-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Color</ion-label>
-    <ion-select [(ngModel)]="criteria.color">
-      <ion-option value="Blue">Blue</ion-option>
-      <ion-option value="Green">Green</ion-option>
-      <ion-option value="Orange">Orange</ion-option>
-      <ion-option value="Pink">Pink</ion-option>
-      <ion-option value="Purple">Purple</ion-option>
-      <ion-option value="Red">Red</ion-option>
-      <ion-option value="White">White</ion-option>
-      <ion-option value="Yellow">Yellow</ion-option>
     </ion-select>
   </ion-item>
 
