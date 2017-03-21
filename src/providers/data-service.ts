@@ -42,8 +42,13 @@ export class DataService {
           return false;
       }
 
-      if (criteria.family && criteria.family.length > 0) {
-        if (!val.scientificFamily.toLowerCase().includes(criteria.family.toLowerCase()) && !val.commonFamily.toLowerCase().includes(criteria.family.toLowerCase()))
+      if (criteria.scientificFamily && criteria.scientificFamily.length > 0) {
+        if (!val.scientificFamily.toLowerCase().includes(criteria.scientificFamily.toLowerCase()))
+          return false;
+      }
+      
+      if (criteria.commonFamily && criteria.commonFamily.length > 0) {
+        if (!val.commonFamily.toLowerCase().includes(criteria.commonFamily.toLowerCase()))
           return false;
       }
 
