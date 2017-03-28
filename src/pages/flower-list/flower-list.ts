@@ -50,7 +50,6 @@ export class FlowerListPage {
     storage.ready().then(() => {
       storage.get('viewMode').then(viewMode => {
         storage.get('displayMode').then(displayMode => {
-          console.debug('Get', viewMode, displayMode);
           this.viewMode = !!viewMode ? viewMode : '0';
           this.displayMode = !!displayMode ? displayMode : '0';
           this.sortData();
@@ -84,12 +83,26 @@ export class FlowerListPage {
     return 'assets/img/flowers/' + src;
   }
 
+  getDisplayCommonName(flower: any) {
+    switch (this.displayMode) {
+      case '0': return flower.commonName;
+      case '1': return !!flower.altCommonName ? flower.altCommonName : flower.commonName;
+    }
+  }
+
+  getDisplayScientificName(flower: any) {
+    switch (this.displayMode) {
+      case '0': return flower.scientificName;
+      case '1': return !!flower.altScientificName ? flower.altScientificName : flower.scientificName;
+    }
+  }
+
   getPrimaryTitle(flower: any) {
     switch (this.viewMode) {
       case '0':
-        return flower.scientificName;
+        return this.getDisplayScientificName(flower);
       case '1':
-        return flower.commonName;
+        return this.getDisplayCommonName(flower);
       case '2':
         return flower.scientificFamily;
       case '3':
@@ -100,9 +113,9 @@ export class FlowerListPage {
   getSecondaryTitle(flower: any) {
     switch (this.viewMode) {
       case '0':
-        return flower.commonName;
+        return this.getDisplayCommonName(flower);
       case '1':
-        return flower.scientificName;
+        return this.getDisplayScientificName(flower);
       case '2':
         return flower.commonFamily;
       case '3':
@@ -117,9 +130,9 @@ export class FlowerListPage {
       case '1':
         return flower.scientificFamily;
       case '2':
-        return flower.scientificName;
+        return this.getDisplayScientificName(flower);
       case '3':
-        return flower.scientificName;
+        return this.getDisplayScientificName(flower);
     }
   }
 
@@ -130,9 +143,9 @@ export class FlowerListPage {
       case '1':
         return flower.commonFamily;
       case '2':
-        return flower.commonName;
+        return this.getDisplayCommonName(flower);
       case '3':
-        return flower.commonName;
+        return this.getDisplayCommonName(flower);
     }
   }
 
@@ -143,7 +156,7 @@ export class FlowerListPage {
     }, {enableBackdropDismiss: false});
     settingsModal.onDidDismiss(data => {
       this.viewMode = data.viewMode;
-
+      this.displayMode = data.displayMode;
       this.sortData();
     });
     settingsModal.present();
@@ -175,15 +188,31 @@ export class FlowerListPage {
     this.filtered = true;
   }
 
-  sortData() {
+  private sortData() {
 
-    let key;
+    let key, altKey;
     switch (this.viewMode) {
       case '0':
-        key = 'scientificName';
+        switch (this.displayMode) {
+          case '0':
+            key = 'scientificName';
+            break;
+          case '1':
+            key = 'altScientificName';
+            altKey = 'scientificName';
+            break;
+        }
         break;
       case '1':
-        key = 'commonName';
+        switch (this.displayMode) {
+          case '0':
+            key = 'commonName';
+            break;
+          case '1':
+            key = 'altCommonName';
+            altKey = 'commonName';
+            break;
+        }
         break;
       case '2':
         key = 'scientificFamily';
@@ -194,7 +223,7 @@ export class FlowerListPage {
     }
 
     let mapped = this.data.map((el, i) => {
-      return {index: i, value: el[key]};
+      return {index: i, value: !!el[key] ? el[key] : el[altKey]};
     });
 
     mapped.sort((a, b) => {
