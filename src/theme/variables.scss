@@ -38,13 +38,22 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+$tabs-ios-tab-text-color: darken(color($colors, info), 30%) !important;
+$tabs-ios-tab-text-color-active: color($colors, info) !important;
 
+$tabs-ios-tab-icon-color: darken(color($colors, info), 30%) !important;
+$tabs-ios-tab-icon-color-active: color($colors, info) !important;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$tabs-md-tab-text-color: darken(color($colors, info), 30%) !important;
+$tabs-md-tab-text-color-active: color($colors, info) !important;
+
+$tabs-md-tab-icon-color: darken(color($colors, info), 30%) !important;
+$tabs-md-tab-icon-color-active: color($colors, info) !important;
 
 
 
@@ -52,7 +61,11 @@ $colors: (
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
+$tabs-wp-tab-text-color: darken(color($colors, info), 30%) !important;
+$tabs-wp-tab-text-color-active: color($colors, info) !important;
 
+$tabs-wp-tab-icon-color: darken(color($colors, info), 30%) !important;
+$tabs-wp-tab-icon-color-active: color($colors, info) !important;
 
 
 // App Theme

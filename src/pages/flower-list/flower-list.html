@@ -5,13 +5,16 @@
     <ion-title>Flowers</ion-title>
 
     <ion-buttons end>
+      <button ion-button clear icon-only (click)="openSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
       <button ion-button clear icon-only (click)="openSearch()">
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 
-  <ion-toolbar>
+  <!--<ion-toolbar>
     <ion-segment [(ngModel)]="viewMode" (ionChange)="sortData()">
       <ion-segment-button value="0">
         Sci. name
@@ -23,15 +26,7 @@
         Family
       </ion-segment-button>
     </ion-segment>
-
-    <!-- select acts strange in a toolbar -->
-    <!--<ion-select [(ngModel)]="viewMode">
-      <ion-option value="0">Scientific name</ion-option>
-      <ion-option value="1">Common name</ion-option>
-      <ion-option value="2">Scientific family</ion-option>
-      <ion-option value="3">Common family</ion-option>
-    </ion-select>-->
-  </ion-toolbar>
+  </ion-toolbar>-->
 
 </ion-header>
 

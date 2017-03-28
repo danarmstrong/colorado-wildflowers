@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ViewController, NavParams} from 'ionic-angular';
+import {ViewController, NavParams, NavController} from 'ionic-angular';
 import {DataService} from '../../providers/data-service';
 
 
@@ -13,7 +13,7 @@ export class SearchPage {
   private zones: any;
   private origins: any;
 
-  constructor(private viewCtrl: ViewController, private navParams: NavParams,
+  constructor(private viewCtrl: ViewController, private navParams: NavParams, private navCtrl: NavController,
               private dataService: DataService) {
     this.zones = dataService.getZones();
     this.origins = dataService.getOrigins();
@@ -36,7 +36,8 @@ export class SearchPage {
   }
 
   search() {
-    this.viewCtrl.dismiss(this.criteria);
+    //let data = this.dataService.searchFlowers(this.criteria);
+    this.viewCtrl.dismiss({criteria: this.criteria});
   }
 
   cancel() {

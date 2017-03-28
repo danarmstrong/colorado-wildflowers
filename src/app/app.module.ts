@@ -1,5 +1,6 @@
 import {NgModule, ErrorHandler, enableProdMode} from '@angular/core';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {IonicStorageModule} from '@ionic/storage';
 import {MyApp} from './app.component';
 import {DataService} from '../providers/data-service';
 import {AboutPage} from '../pages/about/about';
@@ -14,6 +15,7 @@ import {FlowerListPage} from '../pages/flower-list/flower-list';
 import {FlowerImagesPage} from '../pages/flower-images/flower-images';
 import {FlowerDetailsPage} from '../pages/flower-details/flower-details';
 import {SearchPage} from '../pages/search/search';
+import {SettingsPage} from '../pages/settings/settings';
 
 enableProdMode();
 
@@ -31,10 +33,12 @@ enableProdMode();
     FlowerListPage,
     FlowerImagesPage,
     FlowerDetailsPage,
-    SearchPage
+    SearchPage,
+    SettingsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +54,8 @@ enableProdMode();
     FlowerListPage,
     FlowerImagesPage,
     FlowerDetailsPage,
-    SearchPage
+    SearchPage,
+    SettingsPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

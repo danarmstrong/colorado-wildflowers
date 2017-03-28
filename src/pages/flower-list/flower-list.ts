@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, LoadingController, ModalController, AlertController} from 'ionic-angular';
+import {Storage} from '@ionic/storage';
 import {DataService} from '../../providers/data-service';
 import {SearchPage} from '../search/search';
+import {SettingsPage} from '../settings/settings';
 import {TabsPage} from '../tabs/tabs';
 
 /*
@@ -21,27 +23,40 @@ export class FlowerListPage {
   private page: number;
 
   private viewMode: string;
+  private displayMode: string;
   private data: any;
   private viewData: any;
   private filtered: boolean;
   private searchCriteria: any;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams,
+  constructor(private navCtrl: NavController, private navParams: NavParams, private storage: Storage,
               private loadingCtrl: LoadingController, private modalCtrl: ModalController,
               private alertCtrl: AlertController, private dataService: DataService) {
+
     this.pageSize = 30;
     this.maxPages = 0;
     this.page = 0;
 
     this.filtered = false;
-    this.viewMode = '0';
     this.searchCriteria = null;
+
     this.initializeData();
 
     if (navParams.get('searchCriteria')) {
       this.searchCriteria = navParams.get('searchCriteria');
       this.search(this.searchCriteria);
     }
+
+    storage.ready().then(() => {
+      storage.get('viewMode').then(viewMode => {
+        storage.get('displayMode').then(displayMode => {
+          console.debug('Get', viewMode, displayMode);
+          this.viewMode = !!viewMode ? viewMode : '0';
+          this.displayMode = !!displayMode ? displayMode : '0';
+          this.sortData();
+        });
+      });
+    });
   }
 
   initializeData() {
@@ -121,6 +136,19 @@ export class FlowerListPage {
     }
   }
 
+  openSettings() {
+    let settingsModal = this.modalCtrl.create(SettingsPage, {
+      viewMode: this.viewMode,
+      displayMode: this.displayMode
+    }, {enableBackdropDismiss: false});
+    settingsModal.onDidDismiss(data => {
+      this.viewMode = data.viewMode;
+
+      this.sortData();
+    });
+    settingsModal.present();
+  }
+
   openSearch() {
     let searchModal = this.modalCtrl.create(SearchPage, this.searchCriteria, {
       enableBackdropDismiss: false
@@ -129,8 +157,8 @@ export class FlowerListPage {
       if (data.cancel)
         return;
 
-      this.searchCriteria = data;
-      this.search(data);
+      this.searchCriteria = data.criteria;
+      this.search(data.criteria);
     });
     searchModal.present();
   }
