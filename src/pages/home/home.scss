@@ -1,5 +1,15 @@
 page-home {
 
+  ion-title {
+    text-transform: uppercase;
+
+    img {
+      vertical-align: middle;
+      height: 40px;
+      display: inline-block;
+    }
+  }
+
   .vertical-align > * {
     display: flex!important;
     align-content: center!important;
