@@ -15,6 +15,9 @@ export class HomePage {
   private emailAvailable: boolean;
   private emailTemplate: any;
 
+  private width: number;
+  private height: number;
+
   constructor(private navCtrl: NavController, private platform: Platform, private alertCtrl: AlertController) {
     this.emailAvailable = false;
     this.emailTemplate = {
@@ -24,6 +27,12 @@ export class HomePage {
     };
 
     this.platform.ready().then(() => {
+
+      this.width = this.platform.width();
+      this.height = this.platform.height();
+
+      console.debug('width', this.width);
+      console.debug('height', this.height);
 
       SocialSharing.canShareViaEmail().then(() => {
         this.emailAvailable = true;
