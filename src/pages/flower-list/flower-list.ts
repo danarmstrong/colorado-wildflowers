@@ -29,6 +29,8 @@ export class FlowerListPage {
   private filtered: boolean;
   private searchCriteria: any;
 
+  private loading: any;
+
   constructor(private navCtrl: NavController, private navParams: NavParams, private storage: Storage,
               private loadingCtrl: LoadingController, private modalCtrl: ModalController,
               private alertCtrl: AlertController, private dataService: DataService) {
@@ -56,6 +58,22 @@ export class FlowerListPage {
         });
       });
     });
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
+    this.loading.onDidDismiss(() => {
+      this.loading = false;
+    });
+
+    this.loading.present();
+  }
+
+  hideLoading() {
+    if (!!this.loading)
+      this.loading.dismiss();
   }
 
   initializeData() {
@@ -184,15 +202,16 @@ export class FlowerListPage {
   }
 
   private search(criteria: any) {
-
     this.data = this.dataService.searchFlowers(criteria);
     this.sortData();
     this.filtered = true;
   }
 
   private sortData() {
-
     let key, altKey;
+
+    this.showLoading();
+
     switch (this.viewMode) {
       case '0':
         switch (this.displayMode) {
@@ -242,6 +261,8 @@ export class FlowerListPage {
     this.page = 0;
     this.maxPages = Math.ceil(this.data.length > 0 ? this.data.length / this.pageSize : 0);
     this.loadPage(this.page);
+
+    this.hideLoading();
   }
 
   goToView(flower: any) {
