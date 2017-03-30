@@ -107,8 +107,6 @@ export class FlowerListPage {
         return flower.scientificFamily;
       case '3':
         return flower.commonFamily;
-      default:
-        console.debug('Unknown viewMode', this.viewMode);
     }
   }
 

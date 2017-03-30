@@ -26,7 +26,6 @@ export class SettingsPage {
     this.storage.ready().then(() => {
       this.storage.set('viewMode', this.viewMode).then(() => {
         this.storage.set('displayMode', this.displayMode).then(() => {
-          console.debug('Set', this.viewMode, this.displayMode);
           this.viewCtrl.dismiss({viewMode: this.viewMode, displayMode: this.displayMode});
         });
       });
