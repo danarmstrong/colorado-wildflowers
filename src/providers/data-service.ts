@@ -53,7 +53,7 @@ export class DataService {
       }
 
       if (criteria.zone) {
-        if (!val.zones.includes(criteria.zone.toLowerCase()))
+        if (val.zones.indexOf(criteria.zone.toLowerCase()) < 0)
           return false;
       }
 
