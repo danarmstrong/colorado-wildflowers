@@ -107,6 +107,8 @@ export class FlowerListPage {
         return flower.scientificFamily;
       case '3':
         return flower.commonFamily;
+      default:
+        console.debug('Unknown viewMode', this.viewMode);
     }
   }
 
@@ -155,6 +157,8 @@ export class FlowerListPage {
       displayMode: this.displayMode
     }, {enableBackdropDismiss: false});
     settingsModal.onDidDismiss(data => {
+      if (data.cancel)
+        return;
       this.viewMode = data.viewMode;
       this.displayMode = data.displayMode;
       this.sortData();

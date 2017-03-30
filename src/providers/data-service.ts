@@ -46,7 +46,7 @@ export class DataService {
         if (!val.scientificFamily.toLowerCase().includes(criteria.scientificFamily.toLowerCase()))
           return false;
       }
-      
+
       if (criteria.commonFamily && criteria.commonFamily.length > 0) {
         if (!val.commonFamily.toLowerCase().includes(criteria.commonFamily.toLowerCase()))
           return false;
@@ -73,7 +73,7 @@ export class DataService {
       }
 
       if (criteria.color) {
-        if (!val.colors.includes(criteria.color))
+        if (val.colors.indexOf(criteria.color) < 0)
           return false;
       }
 
